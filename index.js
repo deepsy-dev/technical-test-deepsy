@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import sqlite3Package from 'sqlite3';
 import bodyParser from 'body-parser';
 import chalk from 'chalk';
@@ -16,6 +17,7 @@ const db = new sqlite3.Database('./deepsy_test.db', (err) => {
 });
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 const TOKEN = "OpgIe84krMsrMouJrUdxYPghX5o7DKtTiL1alv6vbgg6zuUpUbt0xDUMiLBgY5bw";
@@ -183,7 +185,6 @@ app.delete('/api/:lang/test/:id', (req, res) => {
     });
 
 });
-
 
 const port = process.env.PORT || 3000;
 
